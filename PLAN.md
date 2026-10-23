@@ -6,3 +6,6 @@ Criterion: pick the one that is the most recognizable as friendly when small.
   - Explored on branch B. I drew both in Excalidraw.
 - C: Pink to tan radial gradient on the cheeks as blush and a bezier curve for a smile, should give off a warm and shy impression.
   - Explored on branch C, worked as planned.
+
+Decision: C
+C is the most recognizable as friendly when small because the curved smile and pink cheeks still read clearly at a small size. A's ring of spikes gets cluttered when small and B's sunglasses look don't give off a negative vibe but aren't necessarily friendly. A and B should stay on their branches.
