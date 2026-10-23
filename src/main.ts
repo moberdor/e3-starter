@@ -5,7 +5,10 @@ const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute(
+  "aria-label",
+  "A sunny face with a ring of orange spikes and a beaded smile",
+);
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -49,15 +52,29 @@ nose.setAttribute("stroke-width", "4");
 nose.setAttribute("stroke-linecap", "round");
 face.append(nose);
 
-const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-mouth.setAttribute("x1", "75");
-mouth.setAttribute("y1", "137");
-mouth.setAttribute("x2", "125");
-mouth.setAttribute("y2", "137");
-mouth.setAttribute("stroke", "#302c29");
-mouth.setAttribute("stroke-width", "4");
-mouth.setAttribute("stroke-linecap", "round");
-face.append(mouth);
+for (let i = 0; i < 13; i++) {
+  const angle = (30 + i * 10) * Math.PI / 180;
+  const bead = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  bead.setAttribute("cx", String(100 + 30 * Math.cos(angle)));
+  bead.setAttribute("cy", String(108 + 30 * Math.sin(angle)));
+  bead.setAttribute("r", "2.5");
+  bead.setAttribute("fill", "#302c29");
+  face.append(bead);
+}
+
+for (let i = 0; i < 120; i++) {
+  const angle = (i / 120) * Math.PI * 2;
+  const length = i % 2 === 0 ? 8 : 4;
+  const spike = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  spike.setAttribute("x1", String(100 + 82 * Math.cos(angle)));
+  spike.setAttribute("y1", String(100 + 90 * Math.sin(angle)));
+  spike.setAttribute("x2", String(100 + (82 + length) * Math.cos(angle)));
+  spike.setAttribute("y2", String(100 + (90 + length) * Math.sin(angle)));
+  spike.setAttribute("stroke", "#f08a24");
+  spike.setAttribute("stroke-width", "2");
+  spike.setAttribute("stroke-linecap", "round");
+  face.append(spike);
+}
 
 portrait.append(face);
 
