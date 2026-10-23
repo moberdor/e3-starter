@@ -1,3 +1,8 @@
+// @deno-types="./asset-url.d.ts"
+import sunglassesUrl from "./assets/sunglasses.svg?no-inline";
+// @deno-types="./asset-url.d.ts"
+import capUrl from "./assets/cap.svg?no-inline";
+
 const portrait = document.querySelector<HTMLDivElement>("#portrait")!;
 const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 
@@ -5,7 +10,7 @@ const spin = document.querySelector<HTMLButtonElement>("#spin")!;
 const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 face.setAttribute("viewBox", "0 0 200 200");
 face.setAttribute("role", "img");
-face.setAttribute("aria-label", "A neutral face");
+face.setAttribute("aria-label", "Face with sunglasses and a red hat");
 
 const head = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
 head.setAttribute("cx", "100");
@@ -58,6 +63,25 @@ mouth.setAttribute("stroke", "#302c29");
 mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
+
+const sunglasses = document.createElementNS(
+  "http://www.w3.org/2000/svg",
+  "image",
+);
+sunglasses.setAttribute("href", sunglassesUrl);
+sunglasses.setAttribute("x", "46");
+sunglasses.setAttribute("y", "64");
+sunglasses.setAttribute("width", "108");
+sunglasses.setAttribute("height", "36");
+face.append(sunglasses);
+
+const cap = document.createElementNS("http://www.w3.org/2000/svg", "image");
+cap.setAttribute("href", capUrl);
+cap.setAttribute("x", "19");
+cap.setAttribute("y", "-1");
+cap.setAttribute("width", "116");
+cap.setAttribute("height", "68");
+face.append(cap);
 
 portrait.append(face);
 
