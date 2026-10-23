@@ -5,7 +5,7 @@ function buildFace() {
   const face = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   face.setAttribute("viewBox", "0 0 200 200");
   face.setAttribute("role", "img");
-  face.setAttribute("aria-label", "A neutral face");
+  face.setAttribute("aria-label", "Face with shy smile and blushing");
 
   const head = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -52,15 +52,61 @@ function buildFace() {
   nose.setAttribute("stroke-linecap", "round");
   face.append(nose);
 
-  const mouth = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  mouth.setAttribute("x1", "75");
-  mouth.setAttribute("y1", "137");
-  mouth.setAttribute("x2", "125");
-  mouth.setAttribute("y2", "137");
+  const mouth = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  mouth.setAttribute("d", "M 78 132 Q 100 152 122 132");
+  mouth.setAttribute("fill", "none");
   mouth.setAttribute("stroke", "#302c29");
   mouth.setAttribute("stroke-width", "4");
   mouth.setAttribute("stroke-linecap", "round");
   face.append(mouth);
+
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const blush = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "radialGradient",
+  );
+  blush.setAttribute("id", "blush");
+
+  const pinkStop = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "stop",
+  );
+  pinkStop.setAttribute("offset", "0%");
+  pinkStop.setAttribute("stop-color", "#ec7a8c");
+  blush.append(pinkStop);
+
+  const tanStop = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "stop",
+  );
+  tanStop.setAttribute("offset", "100%");
+  tanStop.setAttribute("stop-color", "#f3cf87");
+  blush.append(tanStop);
+
+  defs.append(blush);
+  face.append(defs);
+
+  const leftCheek = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "ellipse",
+  );
+  leftCheek.setAttribute("cx", "58");
+  leftCheek.setAttribute("cy", "110");
+  leftCheek.setAttribute("rx", "16");
+  leftCheek.setAttribute("ry", "10");
+  leftCheek.setAttribute("fill", "url(#blush)");
+  face.append(leftCheek);
+
+  const rightCheek = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "ellipse",
+  );
+  rightCheek.setAttribute("cx", "142");
+  rightCheek.setAttribute("cy", "110");
+  rightCheek.setAttribute("rx", "16");
+  rightCheek.setAttribute("ry", "10");
+  rightCheek.setAttribute("fill", "url(#blush)");
+  face.append(rightCheek);
 
   return face;
 }
