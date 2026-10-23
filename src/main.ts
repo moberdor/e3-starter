@@ -64,6 +64,7 @@ mouth.setAttribute("stroke-width", "4");
 mouth.setAttribute("stroke-linecap", "round");
 face.append(mouth);
 
+// sunglasses.svg: my own drawing, made in Excalidraw.
 const sunglasses = document.createElementNS(
   "http://www.w3.org/2000/svg",
   "image",
@@ -75,6 +76,7 @@ sunglasses.setAttribute("width", "108");
 sunglasses.setAttribute("height", "36");
 face.append(sunglasses);
 
+// cap.svg: my own drawing, made in Excalidraw.
 const cap = document.createElementNS("http://www.w3.org/2000/svg", "image");
 cap.setAttribute("href", capUrl);
 cap.setAttribute("x", "19");
